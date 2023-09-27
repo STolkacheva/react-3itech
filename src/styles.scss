@@ -1,0 +1,79 @@
+.dialog-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #777;
+}
+
+.dialog {
+  background-color: #fff;
+  max-height: 500px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column; 
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+
+  &__header {
+      background-color: #ddd;
+      display: flex;
+      flex-direction: row;
+      width: inherit;
+  }
+
+  &__header-title-container {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    position: inherit;
+    width: inherit;
+  }
+
+  &__header-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__header-button {
+    white-space: nowrap;
+  }
+
+  &__content {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__content-block {
+      &_left {
+          height: inherit;
+          width: 30%;
+          border-right: 1px solid #ccc;
+      }
+
+      &_right {
+          width: 70%;
+          height: inherit;
+          overflow: auto;
+      }
+  }
+
+  &__footer {
+      background-color: #ddd;
+      text-align: center;
+      overflow-wrap: anywhere;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 500px;
+  width: 100%;
+}

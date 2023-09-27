@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+## Демо
+https://stolkacheva.github.io/react-3itech/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Запуск проекта
 
-## Available Scripts
+- выполнить следующую команду `npm install`
+- в терминале запустите `npm start`
+- откройте страницу `http://localhost:3000/`
 
-In the project directory, you can run:
+## Task
 
-### `npm start`
+## 1. Верстка
+### Задача: дополнить scss правила так, чтобы представленная html разметка приобрела вид как на картинке.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![пример](https://raw.githubusercontent.com/3itech-frontend/interview-tasks/main/example.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```html
+<div class='dialog-container'>
+    <div class='dialog'>
+        <div class='dialog__header'>
+            <div class='dialog__header-title-container'>
+                <div class='dialog__header-title'>
+                    Ссъешь ещё этих мягких французских булок, да выпей чаю
+                </div>
+                <div class='dialog__header-subtitle'>
+                    Съешь ещё этих мягких французских булок, да выпей чаю
+                </div>
+            </div>
+            <button class='dialog__header-button'>
+                Кнопка закрытия
+            </button>
+        </div>
+        <div class='dialog__content'>
+            <div class='dialog__content-block dialog__content-block_left'>
+                Left
+            </div>
+            <div class='dialog__content-block dialog__content-block_right'>
+                <div class='content'>
+                    <span>Top</span>
+                    <span>Center</span>
+                    <span>Bottom</span>
+                </div>
+            </div>
+        </div>
+        <div class='dialog__footer'>
+            Ссъешь ещё этих мягких французских булок, да выпей чаю<br />
+            ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<br />
+            Ссъешь ещё этих мягких французских булок, да выпей чаю
+        </div>
+    </div>
+</div>
+```
 
-### `npm test`
+```SCSS
+.dialog-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #777;
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+.dialog {
+    background-color: #fff;
+    max-height: 500px;
+    max-width: 350px;
 
-### `npm run build`
+    &__header {
+        background-color: #ddd;
+    }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    &__header-title-container {
+    }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    &__header-title {
+    }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    &__header-button {
+    }
 
-### `npm run eject`
+    &__content {
+    }
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    &__content-block {
+        &_left {
+            width: 30%;
+            border-right: 1px solid #ccc;
+        }
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        &_right {
+            width: 70%;
+        }
+    }
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    &__footer {
+        background-color: #ddd;
+    }
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 500px;
+    width: 100%;
+}
+```
 
-## Learn More
+## 2. JS
+### Задача: написать функцию `decode` в том же стиле, что и функция `encode` (вытянутой в цепочку) и узнать значение переменной `input`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+const encode = input => [...input]
+    .map((x, i) => [x.charCodeAt(0), i])
+    .sort()
+    .flatMap(x => x)
+    .join('.')
+    .match(/./g)
+    .flatMap((x, i) => new Array(x == '.' ? 1 : 2 + x * 2).fill((1 + i) % 2))
+    .join('')
+    .replace(/(([01])\2*)/g, x => `${(+x ? '.' : '-')}${x.length}`)
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### `encode(input)`:
+```
+.10-12.1-4.2-1.10-12.1-4.2-2.1-10.12-1.4-2.10-1.10-12.1-4.2-18.1-10.12-1.4-4.6-1.10-12.1-4.4-16.1-10.12-1.4-6.6-1.10-12.1-4.6-14.1-10.12-1.4-8.4-1.10-12.1-4.8-14.1-10.12-1.4-10.1-10.12-1.4-10.2-1.10-12.1-4.10-10.1-10.12-1.4-10.18-1.10-12.1-4.12-6.1-10.12-1.4-12.14-1.10-12.1-4.14-4.1-10.12-1.4-14.12-1.10-12.1-4.14-20.1-10.12-1.4-16.8-1.10-12.1-4.16-16.1-10.12-1.4-18.1-10.12-1.6-1.10-12.1-6.6-1.10-12.1-6.16-1.10-12.1-8.4-1.10-12.1-8.14-1.10-12.1-10.2-1.10-12.1-10.10-1.10-12.1-10.20-1.10-12.1-12.8-1.10-12.1-12.16-1.10-12.1-14.1-10.12-1.14-6.1-10.12-1.14-14.1-10.12-1.16-2.1-10.12-1.16-10.1-10.12-1.16-18.1-10.12-1.18-6.1-10.12-1.18-14.1-10.12-1.20-4.1-10.12-1.20-12.1-10.14-1.2-1.10-14.1-4.2-6.1-10.14-1.4-2.14-1.10-14.1-4.4-2.1-10.14-1.4-4.12-1.10-14.1-4.6-1.10-14.1-4.6-2.1-10.14-1.4-6.10-1.10-14.1-4.6-20.1-10.14-1.4-8.10-1.10-14.1-4.8-18.1-10.14-1.4-10.6-1.10-14.1-4.10-14.1-10.14-1.4-12.2-1.10-14.1-4.12-10.1-10.14-1.4-12.18-1.10-14.1-4.14-1.10-14.1-4.14-8.1-10.14-1.4-14.16-1.10-14.1-4.16-4.1-10.14-1.4-16.12-1.10-14.1-4.16-20.1-10.14-1.6-2.1-10.14-1.6-12.1-10.14-1.6-20.1-10.14-1.8-10.1-10.14-1.8-18.1-10.14-1.10-1.10-14.1-10.6-1.10-14.1-10.16-1.10-14.1-12.4-1.10-14.1-12.12-1.10-14.1-12.20-1.10-14.1-14.10-1.10-14.1-14.18-1.10-14.1-16.6-1.10-14.1-16.14-1.10-14.1-18.1-10.14-1.18-2.1-10.14-1.18-10.1-10.14-1.18-18.1-10.14-1.20-8.1-10.14-1.20-16.1-10.18-1.4-8.8-1.10-18.1-4.14-2.1-10.20-1.4-2.4-1.10-20.1-4.2-16.1-10.20-1.4-4.8-1.10-20.1-4.4-14.1-10.20-1.4-4.18-1.10-20.1-4.6-4.1-10.20-1.4-6.16-1.10-20.1-4.8-1.10-20.1-4.8-2.1-10.20-1.4-8.6-1.10-20.1-4.8-12.1-10.20-1.4-10.8-1.10-20.1-4.10-20.1-10.20-1.4-12.16-1.10-20.1-4.14-6.1-10.20-1.4-14.18-1.10-20.1-4.16-6.1-10.20-1.4-16.18-1.10-20.1-4.18-2.1-10.20-1.6-4.1-10.20-1.6-8.1-10.20-1.6-14.1-10.20-1.8-6.1-10.20-1.8-12.1-10.20-1.8-20.1-10.20-1.10-12.1-10.20-1.10-18.1-10.20-1.12-10.1-10.20-1.14-2.1-10.20-1.14-8.1-10.20-1.14-16.1-10.20-1.16-1.10-20.1-16.12-1.10-20.1-16.20-1.10-20.1-18.16-1.10-20.1-18.20-1.10-20.1-20.6-1.10-20.1-20.18-1.12-2.1-4.10-16.1-12.2-1.4-12.20-1.12-2.1-4.16-1.12-2.1-6.10-1.12-2.1-8.1-12.2-1.8-2.1-12.2-1.8-8.1-12.2-1.8-16.1-12.2-1.10-8.1-12.2-1.12-18.1-12.2-1.20-20.1-12.6-1.4-1.12-6.1-4.2-8.1-12.6-1.4-2.20-1.12-6.1-4.4-4.1-12.6-1.4-6.8-1.12-6.1-4.6-12.1-12.6-1.4-8.16-1.12-6.1-4.10-12.1-12.6-1.4-12.1-12.6-1.4-12.4-1.12-6.1-4.16-2.1-12.6-1.4-18.4-1.12-6.1-4.20-1.12-6.1-6.18-1.12-6.1-10.4-1.12-6.1-12.1-12.6-1.12-2.1-12.6-1.12-6.1-12.6-1.12-14.1-12.6-1.14-20.1-12.6-1.16-4.1-12.6-1.16-8.1-12.6-1.18-4.1-12.6-1.18-8.1-12.6-1.20-1.12-6.1-20.10-1.12-6.1-20.14-1.12-10.1-4.4-1.12-10.1-4.4-10.1-12.10-1.4-8.20-1.12-10.1-4.10-4.1-12.10-1.4-12.8-1.12-10.1-4.12-12.1-12.10-1.4-14.14-1.12-10.1-4.16-14.1-12.10-1.14-12.1-12.10-1.18-12.1-12.10-1.20-2.1-12.14-1.4-2.12-1.12-14.1-4.4-20.1-12.14-1.4-6.18-1.12-14.1-4.14-10.1-12.14-1.4-16.10-1.12-14.1-10.14-1.12-14.1-14.4-1.12-14.1-16.16
+```
