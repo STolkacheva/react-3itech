@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-3itech/static/css/main.382c8581.css",
+    "main.js": "/react-3itech/static/js/main.3f39d463.js",
+    "static/js/787.c85349af.chunk.js": "/react-3itech/static/js/787.c85349af.chunk.js",
+    "index.html": "/react-3itech/index.html",
+    "main.382c8581.css.map": "/react-3itech/static/css/main.382c8581.css.map",
+    "main.3f39d463.js.map": "/react-3itech/static/js/main.3f39d463.js.map",
+    "787.c85349af.chunk.js.map": "/react-3itech/static/js/787.c85349af.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.382c8581.css",
+    "static/js/main.3f39d463.js"
+  ]
+}
